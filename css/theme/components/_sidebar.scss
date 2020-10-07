@@ -1,0 +1,93 @@
+//
+// Sidebar
+// --------------------------------------------------
+
+
+.cz-sidebar,
+.cz-sidebar-static {
+  width: 100%;
+  max-width: $sidebar-max-width;
+  background-color: $sidebar-bg;
+}
+.cz-sidebar-static {
+  padding: $sidebar-padding-y $sidebar-padding-x;
+  @include media-breakpoint-down(md) {
+    max-width: 100%;
+    padding: {
+      right: $sidebar-padding-x / 1.5;
+      left: $sidebar-padding-x / 1.5;
+    }
+  }
+}
+.cz-sidebar-header {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: $sidebar-header-height;
+  padding: .25rem ($spacer * 1.5);
+  background-color: $sidebar-bg;
+  .close { font-size: $h3-font-size; }
+}
+.cz-sidebar-body {
+  padding: $sidebar-padding-y $sidebar-padding-x;
+  .simplebar-content {
+    padding-right: $sidebar-padding-x !important;
+  }
+  & > .simplebar-track { display: none; }
+  [data-simplebar] .simplebar-content > * {
+    margin-right: -.625rem;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .cz-sidebar {
+    position: fixed;
+    top: 0;
+    left: -$sidebar-max-width;
+    height: 100%;
+    transition: $sidebar-transition;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    z-index: $zindex-offcanvas;
+    &.show {
+      left: 0;
+      box-shadow: $sidebar-box-shadow !important;
+    }
+  }
+  .cz-sidebar-header {
+    display: flex;
+    align-items: center;
+  }
+  .cz-sidebar-body {
+    position: absolute;
+    left: 0;
+    width: calc(100% - .375rem);
+    height: calc(100% - #{$sidebar-header-height});
+    padding: {
+      right: $spacer * 1.5;
+      left: $spacer * 1.5;
+    }
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: $scrollbar-width;
+      background-color: transparent;
+      opacity: 0;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $scrollbar-bg;
+      @include border-radius($scrollbar-width / 2);
+    }
+    .simplebar-content {
+      padding-right: $spacer * 1.5 !important;
+    }
+    & > .simplebar-track {
+      display: block;
+      background-color: transparent;
+    }
+    [data-simplebar] .simplebar-content > * {
+      margin-right: -.375rem;
+    }
+  }
+}

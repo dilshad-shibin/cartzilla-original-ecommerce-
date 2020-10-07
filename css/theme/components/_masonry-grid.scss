@@ -1,0 +1,132 @@
+//
+// Masonry grid
+// based on https://github.com/rnmp/salvattore
+// --------------------------------------------------
+
+
+// Base styles
+
+[data-columns] {
+    margin: {
+      right: -($grid-gutter-width / 2);
+      left: -($grid-gutter-width / 2);
+    }
+    @include clearfix;
+  
+    &::before {
+      content: '1 .column.size-1of1';
+    }
+  
+    .grid-item {
+      padding: {
+        right: $grid-gutter-width / 2;
+        left: $grid-gutter-width / 2;
+        bottom: $grid-gutter-width;
+      }
+    }
+    .column { float: left; }
+    .size-1of1 { width: 100%; }
+    .size-1of2 { width: 50%; }
+    .size-1of3 { width: 33.333%; }
+    .size-1of4 { width: 25%; }
+    .size-1of5 { width: 20%; }
+    .size-1of6 { width: 16.666%; }
+  }
+  
+  // 1 column
+  [data-columns='1'] {
+    &::before {
+      content: '1 .column.size-1of1';
+    }
+  }
+  
+  // 2 columns
+  [data-columns='2'] {
+    @include media-breakpoint-up(sm) {
+      &::before {
+        content: '2 .column.size-1of2';
+      }
+    }
+  }
+  
+  // 3 columns
+  [data-columns='3'] {
+    @include media-breakpoint-up(sm) {
+      &::before {
+        content: '2 .column.size-1of2';
+      }
+    }
+    @include media-breakpoint-up(md) {
+      &::before {
+        content: '3 .column.size-1of3';
+      }
+    }
+  }
+  
+  // 4 columns
+  [data-columns='4'] {
+    @include media-breakpoint-up(sm) {
+      &::before {
+        content: '2 .column.size-1of2';
+      }
+    }
+    @include media-breakpoint-up(md) {
+      &::before {
+        content: '3 .column.size-1of3';
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      &::before {
+        content: '4 .column.size-1of4';
+      }
+    }
+  }
+  
+  // 5 columns
+  [data-columns='5'] {
+    @include media-breakpoint-up(sm) {
+      &::before {
+        content: '2 .column.size-1of2';
+      }
+    }
+    @include media-breakpoint-up(md) {
+      &::before {
+        content: '3 .column.size-1of3';
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      &::before {
+        content: '4 .column.size-1of4';
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      &::before {
+        content: '5 .column.size-1of5';
+      }
+    }
+  }
+  
+  // 6 columns
+  [data-columns='6'] {
+    @include media-breakpoint-up(sm) {
+      &::before {
+        content: '2 .column.size-1of2';
+      }
+    }
+    @include media-breakpoint-up(md) {
+      &::before {
+        content: '3 .column.size-1of3';
+      }
+    }
+    @include media-breakpoint-up(lg) {
+      &::before {
+        content: '4 .column.size-1of4';
+      }
+    }
+    @include media-breakpoint-up(xl) {
+      &::before {
+        content: '6 .column.size-1of6';
+      }
+    }
+  }
+  
